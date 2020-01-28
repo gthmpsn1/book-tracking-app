@@ -1,26 +1,59 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import * as BooksAPI from './BooksAPI.js';
+import { Route } from 'react-router-dom';
+import MyBooks from './MyBooks.js';
+import SearchBooks from './SearchBooks.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    books: [],
+  }
+
+  componentDidMount() {
+    BooksAPI.getAll()
+      .then((books) => {
+        this.setState(() => ({
+          books
+      }))
+    })
+  }
+  // updateShelf = (bookIndex, shelfUpdate) => {
+  //   BooksAPI.update(this.state.books[bookIndex], shelfUpdate) 
+  //   this.setState(prevState => {
+  //     prevState.books[bookIndex].shelf= shelfUpdate
+  //     return {books: prevState.books}
+  //   });
+  // }
+
+  updateShelf = (bookIndex, shelfUpdate) => { 
+    this.setState(prevState => {
+      prevState.books[bookIndex].shelf= shelfUpdate
+      return {books: prevState.books}
+    });
+  }
+  // updateShelf = (bookIndex, shelfUpdate) => {
+  //   console.log(this.state.books[bookIndex].shelf)
+  // }
+  // updateShelf = (bookIndex, shelfUpdate) => {
+  //   this.setState(prevState => ({
+  //     books: prevState.books.map(
+  //       bookToUpdate => (
+  //         bookToUpdate.id === bookIndex 
+  //           ? Object.assign(bookToUpdate,{shelf: shelfUpdate}) 
+  //           : bookToUpdate)
+  //     )}));
+  // };
+
+  render() {
+      return(
+      <div>
+        <header className='App-header'>Gabriel's Favorite Books</header>
+        <Route exact path='/' render={() => (<MyBooks books={this.state.books} updateShelf={this.updateShelf}/>)} />
+        <Route path='/search' render={() => (<SearchBooks books={this.state.books} updateShelf={this.updateShelf}/>)} />
+      </div>
+      )
+  }
 }
 
 export default App;
