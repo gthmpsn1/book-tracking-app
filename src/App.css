@@ -1,7 +1,9 @@
 .App {
   text-align: center;
 }
-
+li {
+  list-style: none;
+}
 .App-header {
   background-color: #282c34;
   max-height: 15vh;
@@ -13,24 +15,55 @@
   color: white;
 }
 
-.back-arrow {
-  display: block;
-  width: 60px;
-  height: 60px;
-  background-image: url('./icons/arrow-back.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 30px;
-  font-size: 0;
+.shelfHeader {
+  color: darkblue;
+  text-align: center;
 }
-
-.add-book {
-  display: block;
-  width: 73px;
-  background: white;
-  background-image: url('./icons/arrow-back.svg');
+.shelfBG1 {
+  padding: 3%;
+  background-color: #2196F3;
+}
+.shelfBG2 {
+  padding: 3%;
+  background-color: rgb(33, 243, 79);
+}
+.shelfBG3 {
+  padding: 3%;
+  background-color: rgb(159, 97, 230);
+}
+.bookShelf {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: max-content;
+  grid-gap: 10px;
+  padding: 10px;
+}
+.bookProfile {
+  border-left: 10px black solid;
+  padding-left: 10px;
+  margin-top: 50px;
+}
+.bookImage {
+  float: left;
+  width: 33%;
+}
+.bookInfo {
+  padding-left: 5%;
+  float: left;
+  width: 62%;
+}
+.search-books {
+  width: 80%;
+  margin-left: 10%;
+  padding: 20px 20px 20px 60px;
+  background-image: url('./icons/search.svg');
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: 28px;
-  font-size: 0;
+  background-position: 20px center;
+  background-size: 1.2em;
+  font-size: 1.2em;
+  border: 0;
+  outline: rgb(137, 200, 255) solid 5px;
 }

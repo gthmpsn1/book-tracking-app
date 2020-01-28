@@ -33,7 +33,7 @@ class App extends Component {
     });
   }
   // updateShelf = (bookIndex, shelfUpdate) => {
-  //   console.log(this.state.books[bookIndex].shelf)
+  //   console.log(this.state.books[bookIndex])
   // }
   // updateShelf = (bookIndex, shelfUpdate) => {
   //   this.setState(prevState => ({
