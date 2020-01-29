@@ -18,20 +18,20 @@ class App extends Component {
       }))
     })
   }
-  // updateShelf = (bookIndex, shelfUpdate) => {
-  //   BooksAPI.update(this.state.books[bookIndex], shelfUpdate) 
-  //   this.setState(prevState => {
-  //     prevState.books[bookIndex].shelf= shelfUpdate
-  //     return {books: prevState.books}
-  //   });
-  // }
-
-  updateShelf = (bookIndex, shelfUpdate) => { 
+  updateShelf = (bookIndex, shelfUpdate) => {
+    BooksAPI.update(this.state.books[bookIndex], shelfUpdate) 
     this.setState(prevState => {
       prevState.books[bookIndex].shelf= shelfUpdate
       return {books: prevState.books}
     });
   }
+
+  // updateShelf = (bookIndex, shelfUpdate) => { 
+  //   this.setState(prevState => {
+  //     prevState.books[bookIndex].shelf= shelfUpdate
+  //     return {books: prevState.books}
+  //   });
+  // }
   // updateShelf = (bookIndex, shelfUpdate) => {
   //   console.log(this.state.books[bookIndex])
   // }
