@@ -18,6 +18,20 @@ class App extends Component {
       }))
     })
   }
+
+ searchAPI = (query) => {
+   BooksAPI.search(query)
+    .then(books => {
+      console.log(books)
+      if (Array.isArray(books)) {
+        this.setState(() => ({
+          books
+      }))
+        // only proceed for valid server response
+    }
+    })
+ }
+
   updateShelf = (bookIndex, shelfUpdate) => {
     BooksAPI.update(this.state.books[bookIndex], shelfUpdate) 
     this.setState(prevState => {
@@ -25,6 +39,8 @@ class App extends Component {
       return {books: prevState.books}
     });
   }
+
+
 
   // updateShelf = (bookIndex, shelfUpdate) => { 
   //   this.setState(prevState => {
@@ -50,7 +66,7 @@ class App extends Component {
       <div>
         <header className='App-header'>Gabriel's Favorite Books</header>
         <Route exact path='/' render={() => (<MyBooks books={this.state.books} updateShelf={this.updateShelf}/>)} />
-        <Route path='/search' render={() => (<SearchBooks books={this.state.books} updateShelf={this.updateShelf}/>)} />
+        <Route path='/search' render={() => (<SearchBooks books={this.state.books} updateShelf={this.updateShelf} searchAPI={this.searchAPI} />)} />
       </div>
       )
   }

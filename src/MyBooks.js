@@ -19,6 +19,7 @@ class MyBooks extends Component {
                     <h1 className='shelfHeader'>Currently Reading</h1>
                     <div className='shelfBG1'>
                         <div className='bookShelf'>
+                            
                             {books.map((book, index) => (
                                 book.shelf === 'currentlyReading' &&
                                     <div className='bookProfile' key={index}>
