@@ -30,7 +30,7 @@ class MyBooks extends Component {
                                                 <li>Authors: {book.authors}</li>
                                                 <li>Published: {book.publishedDate}</li>
                                                 <li>ISBN 13: {book.industryIdentifiers[0].identifier}</li>
-                                                <li>ISBN 10: {book.industryIdentifiers[1].identifier}</li>
+                                                {/* <li>ISBN 10: {book.industryIdentifiers[1].identifier}</li> */}
                                                 <li>Pages: {book.pageCount}</li>
                                                 <li><a href={book.previewLink}>PREVIEW</a></li>
                                             </ul>
@@ -38,7 +38,7 @@ class MyBooks extends Component {
                                                 name={index}
                                                 defaultValue={book.shelf}
                                                 onChange={this.handleSelect}>
-                                                <option disabled>Move to...</option>
+                                                <option vaule="none">Move to...</option>
                                                 <option value="currentlyReading">Currently Reading</option>
                                                 <option value="wantToRead">Want to Read</option>
                                                 <option value="read" >Already Read</option>
@@ -62,7 +62,7 @@ class MyBooks extends Component {
                                                 <li>Authors: {book.authors}</li>
                                                 <li>Published: {book.publishedDate}</li>
                                                 <li>ISBN 13: {book.industryIdentifiers[0].identifier}</li>
-                                                <li>ISBN 10: {book.industryIdentifiers[1].identifier}</li>
+                                                {/* <li>ISBN 10: {book.industryIdentifiers[1].identifier}</li> */}
                                                 <li>Pages: {book.pageCount}</li>
                                                 <li><a href={book.previewLink}>PREVIEW</a></li>
                                             </ul>
@@ -70,7 +70,7 @@ class MyBooks extends Component {
                                                 name={index}
                                                 defaultValue={book.shelf}
                                                 onChange={this.handleSelect}>
-                                                <option disabled>Move to...</option>
+                                                <option >Move to...</option>
                                                 <option value="currentlyReading">Currently Reading</option>
                                                 <option value="wantToRead">Want to Read</option>
                                                 <option value="read" >Already Read</option>
@@ -94,7 +94,7 @@ class MyBooks extends Component {
                                                 <li>Authors: {book.authors}</li>
                                                 <li>Published: {book.publishedDate}</li>
                                                 <li>ISBN 13: {book.industryIdentifiers[0].identifier}</li>
-                                                <li>ISBN 10: {book.industryIdentifiers[1].identifier}</li>
+                                                {/* <li>ISBN 10: {book.industryIdentifiers[1].identifier}</li> */}
                                                 <li>Pages: {book.pageCount}</li>
                                                 <li><a href={book.previewLink}>PREVIEW</a></li>
                                             </ul>
@@ -102,7 +102,7 @@ class MyBooks extends Component {
                                                 name={index}
                                                 defaultValue={book.shelf}
                                                 onChange={this.handleSelect}>
-                                                <option disabled>Move to...</option>
+                                                <option vaule="none">Move to...</option>
                                                 <option value="currentlyReading">Currently Reading</option>
                                                 <option value="wantToRead">Want to Read</option>
                                                 <option value="read" >Already Read</option>

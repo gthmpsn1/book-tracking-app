@@ -6,7 +6,7 @@ class SearchFunction extends Component {
     }
     searchAPI = (query) => {
             this.setState(() => ({
-                query: query.trim()
+                query
             }))
             this.props.searchAPI(query)
         }
