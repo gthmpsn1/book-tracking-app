@@ -26,12 +26,13 @@ class App extends Component {
       if (Array.isArray(books)) {
         this.setState(() => ({
           searchResult: books
-      }))}
-    // } else {
-    //   this.setState(() => ({
-    //     searchResult: []
-    // }))
-    // } 
+        }))
+      } else {
+        this.setState(() => ({
+          searchResult: []
+         }))
+    }
+     
   })}
 
   updateShelf = (bookIndex, shelfUpdate) => {
@@ -43,10 +44,18 @@ class App extends Component {
   }
 
   updateSearchShelf = (bookIndex, shelfUpdate) => {
+    const bookId = this.state.searchResult[bookIndex].id
     BooksAPI.update(this.state.searchResult[bookIndex], shelfUpdate)
     this.setState(prevState => {
-      prevState.searchResult[bookIndex].shelf= shelfUpdate
-      return {searchResult: prevState.searchResult}
+      prevState.searchResult[bookIndex].shelf= shelfUpdate;
+
+      prevState.books.forEach(book => {
+        if (book.id === bookId){
+          book.shelf = shelfUpdate
+        }
+      })
+      return {searchResult: prevState.searchResult,
+         books: prevState.books }
     });
 
     //only update the shelf state of selected book in 'books'
@@ -59,19 +68,19 @@ class App extends Component {
     
     // //update 'books' with this new book object to included the shelf state
     // !this.state.books.id.includes(this.state.searchResult[bookIndex].id) &&
-    BooksAPI.update(this.state.books[bookIndex], shelfUpdate) 
-    this.setState(prevState => {
-      prevState.books.push(this.state.searchResult[bookIndex])
-      return {books: prevState.books}
-    });
+    // BooksAPI.update(this.state.books[bookIndex], shelfUpdate) 
+    // this.setState(prevState => {
+    //   prevState.books.push(this.state.searchResult[bookIndex])
+    //   return {books: prevState.books}
+    // });
   }
 
   render() {
       return(
       <div>
         <header className='App-header'>Gabriel's Favorite Books</header>
-        <Route exact path='/' render={() => (<MyBooks books={this.state.books} updateShelf={this.updateShelf}/>)} />
-        <Route path='/search' render={() => (<SearchBooks searchResult={this.state.searchResult} updateSearchShelf={this.updateSearchShelf} searchAPI={this.searchAPI} />)} />
+        <Route exact path='/' render={() => (<MyBooks books={this.state.books} updateShelf={this.updateShelf} updateSearchShelf={this.updateSearchShelf} />)} />
+        <Route path='/search' render={() => (<SearchBooks searchResult={this.state.searchResult} books={this.state.books} updateSearchShelf={this.updateSearchShelf} searchAPI={this.searchAPI} />)} />
       </div>
       )
   }

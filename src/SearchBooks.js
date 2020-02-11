@@ -14,7 +14,16 @@ class SearchBooks extends Component {
     }
 
     render(){
-        const {searchResult} = this.props
+        const {searchResult, books} = this.props;
+        const combinedResult = searchResult.map(searchedBook => {
+            books.forEach(shelvedBook => {
+                if(shelvedBook.id === searchedBook.id){
+                    searchedBook.shelf = shelvedBook.shelf
+                }
+            })
+            return searchedBook
+        })
+        
         return(
             <div>
                 <Link to='/'>{`<<< Back`}</Link>
@@ -27,7 +36,9 @@ class SearchBooks extends Component {
                     <div className='shelfBG1'>
                         <div className='bookShelf'>
                         
-                                {searchResult.map((book, index) => (
+
+
+                                {combinedResult.map((book, index) => (
 
                                     <div className='bookProfile' key={index}>
                                         <img className='bookImage' src={(!book.imageLinks || book.imageLinks.smallThumbnail === null) ? 'n/a' : book.imageLinks.smallThumbnail} alt={book.title}></img>
